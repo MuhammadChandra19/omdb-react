@@ -39,5 +39,5 @@ export interface IRatings {
 
 export interface ISearchMovieParams {
   s: string;
-  page: string
+  page: number
 }
