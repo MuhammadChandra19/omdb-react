@@ -8,8 +8,12 @@ import {
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { History, createBrowserHistory } from 'history';
+import { CommonState } from '@app/domain/common/redux/states';
+import { CommonReducer } from '@app/domain/common/redux/reducers';
 
-export interface AppState { }
+export interface AppState {
+  common: CommonState
+}
 
 
 const logger: Middleware = () => (next) => (action) => {
@@ -26,7 +30,9 @@ export function configureStore(): Store<AppState> {
     middleware = composeWithDevTools(middleware);
   }
 
-  let rootReducer: ReducersMapObject<AppState, any> = {}
+  let rootReducer: ReducersMapObject<AppState, any> = {
+    common: new CommonReducer().build()
+  }
   return createStore(
     combineReducers<AppState>(rootReducer),
     middleware,
