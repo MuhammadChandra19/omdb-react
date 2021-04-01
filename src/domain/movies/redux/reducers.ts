@@ -2,6 +2,7 @@ import { Reducer } from "@app/utils/redux/reducer";
 import { Dict, SingleReducer } from "@app/utils/types";
 import { IMovie } from "../interfaces";
 import { MoviesState } from "./states";
+import { SET_MOVIE_LIST, SET_MOVIE_DETAIL } from './actions'
 
 export class MoviesReducer extends Reducer<MoviesState> {
   constructor() {

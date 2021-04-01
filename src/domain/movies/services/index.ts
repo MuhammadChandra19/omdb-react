@@ -1,6 +1,7 @@
 import { BaseService } from "@app/domain/common/services/base.service";
 import { baseApi } from '@app/utils/api/baseApi'
 import { ISearchMovieParams, IMovieList, IMovie } from "../interfaces";
+import { SET_MOVIE_DETAIL, SET_MOVIE_LIST } from "../redux/actions";
 
 const API_KEY: string = 'faf7e5bb'
 

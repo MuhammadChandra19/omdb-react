@@ -1,11 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
+import MainLayout from './modules/common/MainLayout';
 import { AppStore } from './utils/redux/store';
+import './modules/common/styles/index.scss'
 
 ReactDOM.render(
   <Provider store={AppStore}>
-    <h1>Hallo world</h1>
+    <MainLayout />
   </Provider>,
   document.getElementById("root")
 )
