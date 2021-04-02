@@ -1,7 +1,8 @@
 import { BaseService } from "@app/domain/common/services/base.service";
 import { baseApi } from '@app/utils/api/baseApi'
+import { history } from "@app/utils/redux/store";
 import { IMovieList, IMovie, ISearchMovieParams } from "../interfaces";
-import { SET_MOVIE_DETAIL, SET_MOVIE_LIST, SET_MOVIE_SEARCH, SET_SEARCH_FIELD_VISIBILITY, SET_TOTAL } from "../redux/actions";
+import { SET_IS_VIEW_MOVIE_DETAIL, SET_MOVIE_DETAIL, SET_MOVIE_LIST, SET_MOVIE_SEARCH, SET_SEARCH_FIELD_VISIBILITY, SET_TOTAL } from "../redux/actions";
 
 const API_KEY: string = 'faf7e5bb'
 
@@ -41,10 +42,13 @@ class MoviesService extends BaseService {
 
   public async getMovieDetails(title: string): Promise<void> {
     try {
+      history.push('/details')
+      this.setVisible(SET_IS_VIEW_MOVIE_DETAIL, true)
       this.setLoading(SET_MOVIE_DETAIL, true)
       const movie = await this.api<IMovie>({ apikey: API_KEY, t: title })
       this.dispatch(SET_MOVIE_DETAIL, movie)
       this.setLoading(SET_MOVIE_DETAIL, false)
+
     } catch (e) {
       throw e
     }
@@ -52,6 +56,11 @@ class MoviesService extends BaseService {
 
   public setSearchFieldVisibility(isVisible: boolean): void {
     this.setVisible(SET_SEARCH_FIELD_VISIBILITY, isVisible)
+  }
+
+  public goBackToMovieList(): void {
+    this.setVisible(SET_IS_VIEW_MOVIE_DETAIL, false)
+    history.goBack()
   }
 
 

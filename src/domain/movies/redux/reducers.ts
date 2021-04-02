@@ -13,7 +13,7 @@ export class MoviesReducer extends Reducer<MoviesState> {
         s: '',
         page: 0
       },
-      total: 0
+      total: 0,
     })
   }
 
@@ -50,7 +50,7 @@ export class MoviesReducer extends Reducer<MoviesState> {
       [SET_MOVIE_LIST]: this.setMovieList,
       [SET_MOVIE_DETAIL]: this.setMovieDetail,
       [SET_MOVIE_SEARCH]: this.setMovieSearchParams,
-      [SET_TOTAL]: this.setTotals
+      [SET_TOTAL]: this.setTotals,
     };
   }
 

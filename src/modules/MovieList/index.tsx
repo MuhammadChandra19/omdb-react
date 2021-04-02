@@ -86,6 +86,7 @@ const MovieList = () => {
                   <Col span={12} style={{ marginBottom: 10 }} key={idx}>
                     <Card
                       hoverable
+                      onClick={() => movieService.getMovieDetails(movie.title)}
                       style={{ width: '100%' }}
                       cover={<img alt={movie.title} src={movie.poster} style={{ height: 300 }} />}
                     >

@@ -8,7 +8,7 @@ import MovieDetail from '@app/modules/MovieDetail';
 import { AppState, history } from "@app/utils/redux/store";
 import { useSelector } from 'react-redux';
 import { Dict } from '@app/utils/types';
-import { SET_SEARCH_FIELD_VISIBILITY } from '@app/domain/movies/redux/actions';
+import { SET_IS_VIEW_MOVIE_DETAIL, SET_SEARCH_FIELD_VISIBILITY } from '@app/domain/movies/redux/actions';
 import { movieService } from '@app/domain/movies/services';
 const { Content } = Layout;
 
@@ -24,6 +24,8 @@ const MainLayout = () => {
       <Header
         isSearchVisible={visiblestate[SET_SEARCH_FIELD_VISIBILITY] || false}
         onSearch={(val) => movieService.setSearchFieldVisibility(val)}
+        isBackButtonVisible={visiblestate[SET_IS_VIEW_MOVIE_DETAIL]}
+        onBack={() => movieService.goBackToMovieList()}
       />
       <Content className="main-content">
         <Router history={history}>
