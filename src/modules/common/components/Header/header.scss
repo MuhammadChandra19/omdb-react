@@ -1,5 +1,14 @@
 .header {
-  background-color: #9ad3bc;
+  background-color: #f3eac2;
   padding: 5px;
   text-align: center;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  max-width: 475px;
+  z-index: 99999;
+  display: flex;
+  justify-content: space-between;
 }

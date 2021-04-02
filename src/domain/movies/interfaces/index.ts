@@ -1,5 +1,6 @@
 export interface IMovieList {
   search: Array<IMovie>
+  totalResults: string
 }
 
 export interface IMovie {
