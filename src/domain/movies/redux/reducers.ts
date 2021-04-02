@@ -9,7 +9,10 @@ export class MoviesReducer extends Reducer<MoviesState> {
     super({
       movieList: [],
       movieDetail: {} as IMovie,
-      movieSearchParams: {} as ISearchMovieParams,
+      movieSearchParams: {
+        s: '',
+        page: 0
+      },
       total: 0
     })
   }
