@@ -69,6 +69,7 @@ const MovieList = () => {
             <Search
               onSearch={(val) => movieService.getMovieList(val)}
               style={{ width: '100%', margin: '10px auto' }}
+              data-testid="search-movie"
             />
           ) : null
       }
@@ -85,6 +86,7 @@ const MovieList = () => {
                 movieList.map((movie, idx) => (
                   <Col span={12} style={{ marginBottom: 10 }} key={idx}>
                     <Card
+                      data-testid={`movie-idx-${idx}`}
                       hoverable
                       onClick={() => history.push(`details/${movie.title}`)}
                       style={{ width: '100%' }}

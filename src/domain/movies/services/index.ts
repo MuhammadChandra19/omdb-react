@@ -22,7 +22,6 @@ class MoviesService extends BaseService {
         page: sameTitle ? movieSearchParams.page += 1 : 1,
         s: sameTitle ? movieSearchParams.s : title
       }
-      console.log(makeParams)
       this.setLoading(SET_MOVIE_LIST, true)
       const { search, totalResults } = await this.api<IMovieList>({ apikey: API_KEY, ...makeParams })
       this.dispatch(SET_TOTAL, parseInt(totalResults))
@@ -45,7 +44,7 @@ class MoviesService extends BaseService {
       this.dispatch(SET_MOVIE_DETAIL, {})
       this.setVisible(SET_IS_VIEW_MOVIE_DETAIL, true)
       this.setLoading(SET_MOVIE_DETAIL, true)
-      const movie = await this.api<IMovie>({ apikey: API_KEY, t: title })
+      const movie = await this.api<IMovie>({ t: title, apikey: API_KEY })
       this.dispatch(SET_MOVIE_DETAIL, movie)
 
     } catch (e) {
