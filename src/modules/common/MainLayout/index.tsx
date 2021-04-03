@@ -30,7 +30,7 @@ const MainLayout = () => {
       <Content className="main-content">
         <Router history={history}>
           <Switch>
-            <Route path="/details" component={MovieDetail} />
+            <Route path="/details/:imdbId" component={MovieDetail} />
             <Route path="/" component={MovieList} />
           </Switch>
         </Router>

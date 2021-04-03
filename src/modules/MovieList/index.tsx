@@ -1,7 +1,7 @@
 import { CommonState } from '@app/domain/common/redux/states';
 import { IMovie, ISearchMovieParams } from '@app/domain/movies/interfaces';
 import { movieService } from '@app/domain/movies/services';
-import { AppState } from '@app/utils/redux/store';
+import { AppState, history } from '@app/utils/redux/store';
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Row, Col, Input } from 'antd';
@@ -19,7 +19,7 @@ interface IMoveListPage {
 }
 
 const MovieList = () => {
-  const { common, movieList, searchParams } = useSelector<AppState, IMoveListPage>(state => ({
+  const { common, movieList, searchParams, totalData } = useSelector<AppState, IMoveListPage>(state => ({
     common: state.common,
     movieList: state.moviesState.movieList,
     searchParams: state.moviesState.movieSearchParams,
@@ -86,7 +86,7 @@ const MovieList = () => {
                   <Col span={12} style={{ marginBottom: 10 }} key={idx}>
                     <Card
                       hoverable
-                      onClick={() => movieService.getMovieDetails(movie.title)}
+                      onClick={() => history.push(`details/${movie.title}`)}
                       style={{ width: '100%' }}
                       cover={<img alt={movie.title} src={movie.poster} style={{ height: 300 }} />}
                     >
@@ -100,7 +100,7 @@ const MovieList = () => {
               }
             </Row>
             {
-              common.loading[SET_MOVIE_LIST] && searchParams.page > 1 && (
+              common.loading[SET_MOVIE_LIST] && searchParams.page > 1 && movieList.length < totalData && (
                 <Spinner />
               )
             }

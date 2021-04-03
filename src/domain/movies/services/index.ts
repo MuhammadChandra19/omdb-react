@@ -42,15 +42,16 @@ class MoviesService extends BaseService {
 
   public async getMovieDetails(title: string): Promise<void> {
     try {
-      history.push('/details')
+      this.dispatch(SET_MOVIE_DETAIL, {})
       this.setVisible(SET_IS_VIEW_MOVIE_DETAIL, true)
       this.setLoading(SET_MOVIE_DETAIL, true)
       const movie = await this.api<IMovie>({ apikey: API_KEY, t: title })
       this.dispatch(SET_MOVIE_DETAIL, movie)
-      this.setLoading(SET_MOVIE_DETAIL, false)
 
     } catch (e) {
       throw e
+    } finally {
+      this.setLoading(SET_MOVIE_DETAIL, false)
     }
   }
 

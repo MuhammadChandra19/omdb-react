@@ -1,6 +1,6 @@
 import { Reducer } from "@app/utils/redux/reducer";
 import { Dict, SingleReducer } from "@app/utils/types";
-import { IMovie, ISearchMovieParams } from "../interfaces";
+import { IMovie, IMovieDetail, ISearchMovieParams } from "../interfaces";
 import { MoviesState } from "./states";
 import { SET_MOVIE_LIST, SET_MOVIE_DETAIL, SET_MOVIE_SEARCH, SET_TOTAL } from './actions'
 
@@ -8,7 +8,7 @@ export class MoviesReducer extends Reducer<MoviesState> {
   constructor() {
     super({
       movieList: [],
-      movieDetail: {} as IMovie,
+      movieDetail: {} as IMovieDetail,
       movieSearchParams: {
         s: '',
         page: 0
@@ -24,7 +24,7 @@ export class MoviesReducer extends Reducer<MoviesState> {
     }
   }
 
-  public setMovieDetail(state: MoviesState, movieDetail: IMovie): MoviesState {
+  public setMovieDetail(state: MoviesState, movieDetail: IMovieDetail): MoviesState {
     return {
       ...state,
       movieDetail

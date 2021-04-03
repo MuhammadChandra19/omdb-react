@@ -1,0 +1,39 @@
+.movie-details {
+  &--poster {
+    background-color: #333333;
+    color: white;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 5px 30px;
+      background: rgb(0,0,0);
+      background: linear-gradient(180deg, rgba(0,0,0,1) 40%, rgba(255,255,255,0) 100%);
+    }
+
+    &-plot {
+      padding: 30px 5px 5px;
+      background: rgb(0,0,0);
+      background: linear-gradient(0deg, rgba(0,0,0,1) 40%, rgba(255,255,255,0) 100%);
+    }
+    h1,h2,h4 {
+      color: white;
+    }
+  }
+
+  &--info {
+    span {
+      font-size: 10px;
+    }
+    padding: 5px;
+    background: white;
+  }
+}

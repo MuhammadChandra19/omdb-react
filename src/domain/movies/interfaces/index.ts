@@ -6,7 +6,7 @@ export interface IMovieList {
 export interface IMovie {
   title: string;
   year: string;
-  imdbID: string;
+  imdbId: string;
   type: string;
   poster: string;
 }
@@ -31,6 +31,7 @@ export interface IMovieDetail extends IMovie {
   boxOffice: string;
   production: string;
   webstite: string;
+  plot: string;
 }
 
 export interface IRatings {
