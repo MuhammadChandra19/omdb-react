@@ -7,7 +7,7 @@ import {
   Store,
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { History, createMemoryHistory } from 'history';
+import { History, createMemoryHistory, createBrowserHistory } from 'history';
 import { CommonState } from '@app/domain/common/redux/states';
 import { CommonReducer } from '@app/domain/common/redux/reducers';
 import { MoviesState } from '@app/domain/movies/redux/states';
@@ -20,7 +20,6 @@ export interface AppState {
 
 
 const logger: Middleware = () => (next) => (action) => {
-  console.log(process.env.NODE_ENV)
   if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     console.log(action);
   }
@@ -46,6 +45,6 @@ export function configureStore(): Store<AppState> {
   )
 }
 
-export const history: History = createMemoryHistory({ initialIndex: 0 });
+export const history: History = process.env.NODE_ENV === 'test' ? createMemoryHistory({ initialIndex: 0 }) : createBrowserHistory({ basename: '/' });
 
 export const AppStore = configureStore();

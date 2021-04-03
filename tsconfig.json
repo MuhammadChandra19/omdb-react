@@ -28,7 +28,11 @@
       ]
     }
   },
+  "include": [
+    "**/*"
+  ],
   "exclude": [
+    "./src/**/*.test.tsx",
     "build",
     "node_modules"
   ]

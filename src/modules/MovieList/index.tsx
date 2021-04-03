@@ -45,22 +45,6 @@ const MovieList = () => {
       handleScroll()
     })
   }, [])
-
-  // const showButtonNextPage = () => {
-  //   return movieList?.length < totalData
-  //     && <Button
-  //       style={{ margin: '10 auto' }}
-  //       loading={common.loading[SET_MOVIE_LIST]}
-  //       type="primary"
-  //       onClick={() => movieService.getMovieList({ ...searchParams, page: searchParams.page += 1 })}
-  //     >
-  //       load more
-  //     </Button>
-  // }
-
-  useEffect(() => {
-    console.log(movieList.length < 1)
-  }, [common])
   return (
     <div>
       {

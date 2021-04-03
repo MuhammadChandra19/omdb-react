@@ -3,7 +3,6 @@ import { toCamelCase, toQueryString } from './converter';
 export const baseApi = () => {
   const _baseRequest = async function <T>(url: string): Promise<T> {
     const resultFetch = await axios.get(url)
-    console.log(resultFetch)
     if (resultFetch.status === 200 && resultFetch.data.Response === 'True') {
       return resultFetch.data as unknown as T
     }
